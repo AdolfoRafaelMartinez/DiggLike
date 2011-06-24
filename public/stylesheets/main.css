@@ -1,0 +1,37 @@
+a {text-decoration: none}
+a.bodyLinks:link    {
+	color: #003366; 
+	text-decoration: none; 
+	font-family: Geneva, Arial, Helvetica, sans-serif; 
+	font-size: 13px;
+}
+a.bodyLinks:visited    {
+	color: #F30;
+	text-decoration: none;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+a.bodyLinks:hover {
+	color: #cccccc;
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	text-decoration: none;
+	font-size: 13px;
+}
+.test {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #0000ff;
+	text-decoration: none;
+}
+.plainText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10pt;
+	color: #033568;
+	text-decoration: none;
+}
+.headerText {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13pt;
+	color: 033568;
+	font-size: 18px;
+}

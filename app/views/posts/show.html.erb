@@ -1,0 +1,13 @@
+<h1>Ask Reggie Q & A</h1>
+<p>  
+<b>When:</b>  
+<%=h @post.created_at.getlocal %> 
+</p> 
+<p>  
+<b>Dear Reggie:</b>  
+<%=h @post.content %> 
+</p>  
+<p><b><%=h @post.name %></b>: <%=h @post.response %> 
+</p>  
+<%= link_to 'Edit Post', edit_post_path(@post) %> | 
+<%= link_to 'Back to Posts', posts_path %> | 

@@ -1,0 +1,74 @@
+<table border="0" width="540" >
+	<tr>
+		<td width="1"></td>
+		<td width="1"></td>
+		<td width="1"><span class="plainText"><b>Fuel</b></span></td>
+		<td width="1" align="Center" valign="Top" ><span class="plainText"><b>Question</b></span></td>
+		<td width="1" align="Center"><span class="plainText"><b>When</b></span></td>
+	</tr>
+	<% @posts.each do |post| %>
+		<SCRIPT>
+			$(document).ready(function(){
+			$("input.button<%= 'Para' + post.id.to_s %>hide").click(function(){ $("div.contentToChange").find("p.<%= 'Para' + post.id.to_s %>").hide("fast"); });
+			$("input.button<%= 'Para' + post.id.to_s %>show").click(function(){ $("div.contentToChange").find("p.<%= 'Para' + post.id.to_s %>").show("slow"); });
+			});
+		</SCRIPT>
+      <tr><td><br></td></tr>
+	  <tr>
+		<td valign="Top"><%= link_to image_tag("UpArrow.png", :border =>0), :controller => "posts", :action => "rateup", :id => post, :period => params[:period] %></td> 
+		<td valign="Top"><%= link_to image_tag("DnArrow.png", :border =>0), :controller => "posts", :action => "ratedn", :id => post, :period => params[:period] %></td> 
+		<td valign="Top" align="center" class="plainText"><%=h post.rate %></td> 
+		<td valign="Top" class="plainText">
+		  <p><b>Dear Reggie</b>: <%=h post.content %>
+			  <INPUT type="button" value="buttonDhide" class="button<%= 'Para' + post.id.to_s %>hide"> 
+			  <INPUT type="button" value="buttonDshow" class="button<%= 'Para' + post.id.to_s %>show"> 
+		  </p>
+		</td> 
+		<% 
+		  t0 = post.created_at
+		  t1 = Time.now
+		  td = t1 - t0
+		  ts = "Huh?"  
+		  if td < 60 then
+			ts = "This minute"
+		  elsif td < 60 * 2 then
+			ts = "A minute ago"
+		  elsif td < 3600 then
+			ts = ("%.0f" % (td / 60)).to_s + " mins ago"
+		  elsif td < 3600 * 2 then
+			ts = "One hour ago"
+		  elsif td < 3600 * 24 then
+			ts = ("%.0f" % (td / 3600)).to_s + " hours ago"
+		  elsif td < 3600 * 24 * 2 then
+			ts = "Yesterday"
+		  elsif td < 3600 * 24 * 7 then
+			ts = ("%.0f" % (td / (3600 * 24))).to_s + " days ago"
+		  elsif td < 3600 * 24 * 7 * 2 then
+			ts = "Last week"
+		  elsif td < 3600 * 24 * 30.3 then
+			ts = ("%.0f" % (td / (3600 * 24 * 7))).to_s + " weeks ago"
+		  elsif td < 3600 * 24 * 30.3 * 2 then
+			ts = "About last month"
+		  elsif td < 3600 * 24 * 365.25 then
+			ts = ("%.0f" % (td / (3600 * 24 * 30))).to_s + " months ago"
+		  elsif td < 3600 * 24 * 365.25 * 2 then
+			ts = "Last year"
+		  else
+			ts = ("%.0f" % (td / (3600 * 24 * 365))).to_s + " years ago"
+		  end
+		%>
+		<td valign="Top" align="Center" class="plainText"><%= ts %></td> 
+	  </tr>
+	  <tr>
+	  	<td></td>
+	  	<td></td>
+	  	<td></td>
+	  	<td >
+			<DIV class="contentToChange">
+			  <p class="<%= 'Para' + post.id.to_s %>" ><b><%=h post.name %></b>: <%=h post.response %></p>
+			</div>
+		</td> 
+	  	<td></td>
+	  </tr>
+	<% end %> 
+</table> 
